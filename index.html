@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Praya Language Converter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="frame">
+    <div class="bg-gradient" aria-hidden></div>
+    <div class="bg-blobs" aria-hidden></div>
+
+    <div class="card" role="application">
+      <div class="head">
+        <div class="logo ripple" aria-hidden>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" fill="rgba(255,255,255,0.06)"/>
+            <path d="M7 8h10M7 12h10M7 16h6" stroke="white" stroke-opacity="0.9" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div>
+          <h1>Praya Language</h1>
+          <p class="lead">Z = 1 … A = 26 · Paste text → Encode → Copy or Decode numbers back to text.</p>
+        </div>
+
+        <div style="margin-left:auto;text-align:right">
+          <div class="status">
+            <span class="dot"></span>
+            <span style="font-weight:700">Offline</span>
+            <span style="color:var(--muted);margin-left:8px;font-size:12px">No data leaves your browser</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="panel">
+          <label class="small">Input</label>
+          <textarea id="input" placeholder="Type or paste message — e.g. you want" autofocus></textarea>
+
+          <div class="controls">
+            <label class="small">Separator</label>
+            <select id="sep">
+              <option value=" ">Space</option>
+              <option value="-">Dash (-)</option>
+              <option value=".">Dot (.)</option>
+              <option value="," selected>Comma (,)</option>
+            </select>
+
+            <label style="display:flex;align-items:center;gap:8px;margin-left:6px">
+              <input type="checkbox" id="preserveP" checked> Keep punctuation
+            </label>
+
+            <div style="margin-left:auto;display:flex;gap:8px">
+              <button id="encodeBtn" class="btn btn-primary ripple" title="Encode">Encode</button>
+              <button id="decodeBtn" class="btn btn-ghost ripple" title="Decode">Decode</button>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+            <div class="small-note">Try: <strong>what you want</strong></div>
+            <div class="small-note">Separator shows between numbers; double separator = word break</div>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
+            <div class="hint">Keyboard: <strong>Ctrl/Cmd+E</strong> Encode • <strong>Ctrl/Cmd+D</strong> Decode</div>
+          </div>
+        </section>
+
+        <aside class="panel">
+          <label class="small">Output</label>
+          <div id="output" class="output" contenteditable="true" role="textbox" aria-label="Output area">
+            Output will appear here... <span class="caret" aria-hidden></span>
+          </div>
+
+          <div class="meta">
+            <div class="small-note">Rule: value = <strong>27 - (A=1 … Z=26)</strong></div>
+            <div class="actions">
+              <button id="copyBtn" class="btn btn-ghost ripple">Copy</button>
+              <button id="downloadBtn" class="btn btn-ghost">Download</button>
+              <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="autoCopy"> Auto-copy</label>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+            <div class="tiny" style="color:var(--muted)">Decoded text will appear in uppercase</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
